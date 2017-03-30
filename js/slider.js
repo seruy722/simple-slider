@@ -35,3 +35,28 @@ btnRight.onclick = () => {
   }
 };
 
+btnLeft.onclick = () => {
+  for (let i = 0; i < images.length; i++) {
+    if (images[i].style.display === "none") {
+      continue;
+    } else {
+      activeImg = images[i];
+      activePag = pagination[i];
+    }
+  }
+
+  let nextPag = activePag.nextElementSibling;
+  let nextImg = activeImg.nextElementSibling;
+  let previousPag = activePag.previousElementSibling;
+  let previousImg = activeImg.previousElementSibling;
+  activeImg.style.display = "none";
+  if (previousImg) {
+    previousImg.style.display = "block";
+    activePag.classList.remove("active");
+    previousPag.classList.add("active");
+  } else {
+    images[images.length - 1].style.display = "block";
+    activePag.classList.remove("active");
+    pagination[images.length - 1].classList.add("active");
+  }
+};
